@@ -57,7 +57,6 @@ VALUES
 
 
 
-
 INSERT INTO bookings (user_id, vehicle_id, start_date, end_date, status, total_cost)
 VALUES
 -- Booking 1
@@ -74,3 +73,28 @@ VALUES
 ('6372eae7-4133-4720-b190-4d72522cc41e', '212d0f10-3bf3-483f-afcc-fdd2e122866d', '2025-12-01', '2025-12-03', 'completed', 180.00),
 -- Booking 7
 ('f19c9cf4-9216-4579-b31b-0665a0546330', '16966c76-9f64-4e2e-b1fb-943c635ff34b', '2025-12-08', '2025-12-12', 'confirmed', 380.00);
+
+
+
+
+
+CREATE OR REPLACE FUNCTION update_vehicle_status () RETURNS trigger AS $$
+BEGIN
+    IF TG_OP = 'INSERT' OR (TG_OP = 'UPDATE' AND NEW.status = 'confirmed') THEN
+        UPDATE vehicles
+        SET status = 'rented'
+        WHERE vehicle_id = NEW.vehicle_id;
+    ELSIF TG_OP = 'UPDATE' AND NEW.status IN ('completed', 'cancelled') THEN
+        UPDATE vehicles
+        SET status = 'available'
+        WHERE vehicle_id = NEW.vehicle_id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+create trigger trg_update_vehicle_status
+after insert
+or
+update on bookings for each row
+execute function update_vehicle_status ()
