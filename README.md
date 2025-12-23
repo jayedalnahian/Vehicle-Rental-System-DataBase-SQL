@@ -134,14 +134,14 @@ HAVING COUNT(b.booking_id) > 2;
 ## 🎤 Part 3: Theory Questions (Viva Practice)
 ### ❓ Question 1
 
-What is a foreign key and why is it important?
+**What is a foreign key and why is it important?**
 
 A foreign key is a column that references the primary key of another table.
 It ensures data integrity by maintaining correct relationships between tables and prevents invalid data insertion.
 
 ### ❓ Question 2
 
-Difference between WHERE and HAVING
+**Difference between WHERE and HAVING**
 
 WHERE filters rows before grouping
 
@@ -149,7 +149,7 @@ HAVING filters grouped data after aggregation
 
 ### ❓ Question 3
 
-What is a primary key and its characteristics?
+**What is a primary key and its characteristics?**
 
 A primary key uniquely identifies each row in a table.
 Characteristics:
@@ -162,7 +162,7 @@ Only one primary key per table
 
 ### ❓ Question 4
 
-Difference between INNER JOIN and LEFT JOIN
+**Difference between INNER JOIN and LEFT JOIN**
 
 INNER JOIN returns only matching rows from both tables
 
@@ -182,9 +182,16 @@ Understanding of relational database concepts
 
 # 👤 Author
 
-Name: Jayed Al Nahian
-Project: Vehicle Rental System Database
-Database: PostgreSQL
+**Name:** Jayed Al Nahian  
+**Project:** Vehicle Rental System Database  
+**Database:** PostgreSQL  
+
+🔗 **GitHub Repository:**  
+https://github.com/jayedalnahian/Vehicle-Rental-System-DataBase-SQL 
+
+📊 **ERD (Lucidchart Public Link):**  
+https://drawsql.app/teams/jayed-al-nahian/diagrams/vehicle-rental-system
+
 
 
 
