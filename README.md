@@ -90,7 +90,101 @@ INNER JOIN users u ON u.user_id = b.user_id
 INNER JOIN vehicles v ON v.vehicle_id = b.vehicle_id;
 ```
 
+### ✅ Query 2: EXISTS
 
+**Find vehicles that have never been booked**
+```sql
+SELECT *
+FROM vehicles v
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM bookings b
+  WHERE b.vehicle_id = v.vehicle_id
+);
+```
+
+
+
+
+## ✅ Query 3: WHERE
+
+**Retrieve all available vehicles of a specific type (e.g. car)**
+
+``` sql
+SELECT *
+FROM vehicles
+WHERE status = 'available'
+AND v_type = 'car';
+```
+
+### ✅ Query 4: GROUP BY & HAVING
+
+**Find vehicles with more than 2 bookings**
+
+``` sql
+SELECT
+  v.v_name,
+  COUNT(b.booking_id) AS total_bookings
+FROM bookings b
+JOIN vehicles v ON v.vehicle_id = b.vehicle_id
+GROUP BY v.v_name
+HAVING COUNT(b.booking_id) > 2;
+```
+
+## 🎤 Part 3: Theory Questions (Viva Practice)
+### ❓ Question 1
+
+What is a foreign key and why is it important?
+
+A foreign key is a column that references the primary key of another table.
+It ensures data integrity by maintaining correct relationships between tables and prevents invalid data insertion.
+
+### ❓ Question 2
+
+Difference between WHERE and HAVING
+
+WHERE filters rows before grouping
+
+HAVING filters grouped data after aggregation
+
+### ❓ Question 3
+
+What is a primary key and its characteristics?
+
+A primary key uniquely identifies each row in a table.
+Characteristics:
+
+Must be unique
+
+Cannot be NULL
+
+Only one primary key per table
+
+### ❓ Question 4
+
+Difference between INNER JOIN and LEFT JOIN
+
+INNER JOIN returns only matching rows from both tables
+
+LEFT JOIN returns all rows from the left table, even if no match exists in the right table
+
+## ✅ Conclusion
+
+This project successfully demonstrates:
+
+Proper database normalization
+
+Clear ERD design
+
+Real-world SQL queries
+
+Understanding of relational database concepts
+
+# 👤 Author
+
+Name: Jayed Al Nahian
+Project: Vehicle Rental System Database
+Database: PostgreSQL
 
 
 
