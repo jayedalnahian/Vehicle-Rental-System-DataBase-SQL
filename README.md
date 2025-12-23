@@ -22,6 +22,10 @@ The system manages three main entities:
 - **Vehicles**
 - **Bookings**
 
+
+![Vehicle Rental System ERD](./ERD.png)
+
+
 ### 🔑 Business Rules Supported
 
 #### Users Table
